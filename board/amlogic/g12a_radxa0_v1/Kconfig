@@ -19,4 +19,9 @@ config SYS_SOC
 config SYS_CONFIG_NAME
 	default "g12a_radxa0_v1"
 
+config AML_REBOOT
+	bool "reboot cmd"
+	default y
+	help
+		support uboot reboot cmd
 endif
