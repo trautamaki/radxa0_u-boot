@@ -222,7 +222,7 @@ static int do_RunBcbCommand(
     char recovery[RECOVERYBUF_SIZE] = {0};
     char miscbuf[MISCBUF_SIZE] = {0};
     char clearbuf[COMMANDBUF_SIZE+STATUSBUF_SIZE+RECOVERYBUF_SIZE] = {0};
-    //char* RebootMode;
+    char* RebootMode;
 	int remain_time = 0;
 
     if (argc != 2) {
@@ -338,13 +338,13 @@ static int do_RunBcbCommand(
     printf("[command:%s]\n[status:%s]\n[recovery:%s]\n",
             command, status, recovery);
 
-    // run_command("get_rebootmode", 0);
-    // RebootMode = env_get("reboot_mode");
-    // if (strstr(RebootMode, "quiescent") != NULL) {
-    //     printf("quiescent mode.\n");
-    //     run_command("run storeargs", 0);
-	// run_command("setenv bootconfig ${bootconfig} androidboot.quiescent=1;", 0);
-    // }
+    run_command("get_rebootmode", 0);
+    RebootMode = env_get("reboot_mode");
+    if (strstr(RebootMode, "quiescent") != NULL) {
+        printf("quiescent mode.\n");
+        run_command("run storeargs", 0);
+	run_command("setenv bootconfig ${bootconfig} androidboot.quiescent=1;", 0);
+    }
 
 	char *retry_times;
 
