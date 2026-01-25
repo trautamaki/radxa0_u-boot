@@ -8,9 +8,9 @@
  *   Author: Neil Armstrong <narmstrong@baylibre.com>
  */
 
-/* Common DTSI for devices which are based on the P212 reference board. */
+/* Common DTSI for Radxa Zero based on the Meson G12A S905Y2 SOC. */
 
-#include "meson-g12a-s905d2.dtsi"
+#include "meson-g12a-s905y2.dtsi"
 
 / {
 	aliases {
@@ -32,7 +32,7 @@
 
 	memory@0 {
 		device_type = "memory";
-		reg = <0x0 0x0 0x0 0x80000000>;
+		reg = <0x0 0x0 0x0 0x40000000>;
 	};
 
 	vddio_boot: regulator-vddio_boot {
@@ -84,16 +84,11 @@
 };
 
 &ethmac {
-	status = "okay";
-	internal_phy = <1>;
-	mc_val = <0x4be04>;
-	/*mc_val = <0x1621>;*/
+	status = "disabled";
 };
 
 &ir {
 	status = "disabled";
-	/* pinctrl-0 = <&remote_input_ao_pins>; */
-	/* pinctrl-names = "default"; */
 };
 
 &saradc {
@@ -126,7 +121,7 @@
 
 /* SD card */
 &sd_emmc_b {
-	status = "okay";
+	status = "disabled";
 	pinctrl-0 = <&sd_all_pins>;
 	pinctrl-names = "default";
 
@@ -185,52 +180,7 @@
 
 /* nand */
 &nand {
-	status = "okay";
-	pinctrl-names = "default", "nand_all_pins", "nand_cs_only";
-	pinctrl-0 = <&all_nand_pins>;
-	pinctrl-1 = <&all_nand_pins>;
-	pinctrl-2 = <&nand_cs_pins>;
-
-	/*
-	#address-cells = <1>;
-	#size-cells = <0>;
-
-	nand@0 {
-		reg = <0>;
-		#address-cells = <1>;
-		#size-cells = <1>;
-
-		nand-on-flash-bbt;
-		nand-ecc-mode = "hw";
-		nand-ecc-strength = <8>;
-		nand-ecc-step-size = <1024>;
-
-		meson-nand-user-mode = <2>;
-		meson-nand-ran-mode = <1>;
-
-		partition@0 {
-			label = "boot";
-			reg = <0x00000000 0x00200000>;
-			read-only;
-		};
-		partition@200000 {
-			label = "env";
-			reg = <0x00200000 0x00400000>;
-		};
-		partition@600000 {
-			label = "system";
-			reg = <0x00600000 0x00a00000>;
-		};
-		partition@1000000 {
-			label = "rootfs";
-			reg = <0x01000000 0x03000000>;
-		};
-		partition@4000000 {
-			label = "media";
-			reg = <0x04000000 0x8000000>;
-		};
-	};*/
-
+	status = "disabled";
 };
 
 &dwc3 {
@@ -273,14 +223,6 @@
 
 &spifc {
 	status = "disabled";
-	pinctrl-names = "default";
-	pinctrl-0 = <&spifc_all_pins>;
-	max-frequency = <80000000>;
-	max-io = <4>;
-	max-cs = <2>;
-	cs-gpios = <&gpio BOOT_14 GPIO_ACTIVE_HIGH>;
-	clocks = <&clkc CLKID_CLK81>;
-	clock-names = "core";
 };
 
 &spicc1 {

@@ -44,7 +44,6 @@
 /dts-v1/;
 
 #include "meson-g12a-s905y2-radxa-zero.dtsi"
-#include "meson-g12a_skt-panel.dtsi"
 
 / {
 	compatible = "amlogic,u200", "amlogic,s905d2", "amlogic,meson-g12a", "radxa,zero", "amlogic,g12a";

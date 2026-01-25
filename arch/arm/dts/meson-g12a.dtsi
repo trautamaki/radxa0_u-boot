@@ -250,7 +250,7 @@
 	clkc: clock-controller@0 {
 		compatible = "amlogic,g12a-clkc", "amlogic,gxbb-clkc";
 		#clock-cells = <1>;
-		reg = <0x0 0x0 0x0 0x3db>;
+		reg = <0x0 0x0 0x0 0x1000>;
 	};
 };
 
@@ -886,7 +886,7 @@
 	clocks = <&clkc CLKID_SD_EMMC_A>,
 		 <&xtal>,
 		 <&clkc CLKID_FCLK_DIV2>;
-	clock-names = "core", "clkin0", "clkin1";
+	clock-names = "core", "xtal", "clkin1";
 };
 
 &sd_emmc_b {
@@ -896,7 +896,7 @@
 			<&clkc CLKID_SD_EMMC_B_P0_MUX>,
 			<&clkc CLKID_SD_EMMC_B_P0_DIV>,
 			<&clkc CLKID_SD_EMMC_B_P0_GATE>;
-	clock-names = "core", "clkin0", "clkin1", "mux", "div", "gate";
+	clock-names = "core", "xtal", "clkin1", "mux", "div", "gate";
 };
 
 &sd_emmc_c {
@@ -906,8 +906,7 @@
 			<&clkc CLKID_SD_EMMC_C_P0_MUX>,
 			<&clkc CLKID_SD_EMMC_C_P0_DIV>,
 			<&clkc CLKID_SD_EMMC_C_P0_GATE>;
-	clock-names = "core", "clkin0", "clkin1", "mux", "div", "gate";
-
+	clock-names = "core", "xtal", "clkin1", "mux", "div", "gate";
 };
 
 &nand {

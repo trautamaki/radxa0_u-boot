@@ -216,14 +216,14 @@
 
 		cbus: cbus@ffd00000 {
 			compatible = "simple-bus";
-			reg = <0x0 0xffd00000 0x0 0x26000>;
-			#address-cells = <2>;
-			#size-cells = <2>;
-			ranges = <0x0 0x0 0x0 0xffd00000 0x0 0x26000>;
+			reg = <0x00 0xffd00000 0x00 0x100000>;
+			#address-cells = <0x02>;
+			#size-cells = <0x02>;
+			ranges = <0x00 0x00 0x00 0xffd00000 0x00 0x100000>;
 
 			reset: reset-controller@1000 {
 				compatible = "amlogic,meson-gx-reset", "amlogic,meson-gxbb-reset";
-				reg = <0x0 0x01000 0x0 0x1000>;
+				reg = <0x0 0x01004 0x0 0x9c>;
 				#reset-cells = <1>;
 			};
 
@@ -387,12 +387,12 @@
 			};
 		};
 
-		aobus: aobus@fe000000 {
+		aobus: aobus@ff800000 {
 			compatible = "simple-bus";
-			reg = <0x0 0xfe000000 0x0 0x100000>;
+			reg = <0x0 0xff800000 0x0 0x100000>;
 			#address-cells = <2>;
 			#size-cells = <2>;
-			ranges = <0x0 0x0 0x0 0xfe000000 0x0 0x100000>;
+			ranges = <0x0 0x0 0x0 0xff800000 0x0 0x100000>;
 
 			clkc_AO: clock-controller@0 {
 				compatible = "amlogic,g12a-aoclkc";
@@ -400,9 +400,9 @@
 				#clock-cells = <1>;
 			};
 
-			uart_AO: serial@1c00 {
+			uart_AO: serial@3000 {
 				compatible = "amlogic,meson-uart";
-				reg = <0x0 0x1c00 0x0 0x14>;
+				reg = <0x0 0x3000 0x0 0x18>;
 				interrupts = <GIC_SPI 193 IRQ_TYPE_EDGE_RISING>;
 				clocks = <&xtal>;
 				status = "disabled";
@@ -471,7 +471,7 @@
 			clkc: clock-controller@0 {
 				compatible = "amlogic,g12a-clkc";
 				#clock-cells = <1>;
-				reg = <0x0 0x0 0x0 0x320>;
+				reg = <0x0 0x0 0x0 0x1000>;
 				clocks = <&xtal>;
 				clock-names = "xtal";
 			};

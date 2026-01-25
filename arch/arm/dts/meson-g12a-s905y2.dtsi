@@ -45,11 +45,10 @@
 #include "meson-g12a-mali.dtsi"
 
 / {
-	compatible = "amlogic,s905d2", "amlogic,meson-g12a";
+	compatible = "amlogic,s905y2", "amlogic,meson-g12a";
 };
 
-/* S905X only has access to its internal PHY */
+/* S905Y2 does not have an internal Ethernet PHY */
 &ethmac {
-	phy-mode = "rmii";
-	phy-handle = <&internal_phy>;
+	status = "disabled";
 };
