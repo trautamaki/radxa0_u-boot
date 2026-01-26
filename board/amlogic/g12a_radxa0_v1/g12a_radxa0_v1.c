@@ -307,13 +307,10 @@ int board_init(void)
 	 */
 	*(volatile uint32_t *)P_RESET1_LEVEL |= (3 << 16);
 
-	// hack
-#if 0
 #ifdef CONFIG_AML_V2_FACTORY_BURN
 	if ((0x1b8ec003 != readl(P_PREG_STICKY_REG2)) && (0x1b8ec004 != readl(P_PREG_STICKY_REG2))) {
 				aml_try_factory_usb_burning(0, gd->bd);
 	}
-#endif
 #endif
 
 	pinctrl_devices_active(PIN_CONTROLLER_NUM);
