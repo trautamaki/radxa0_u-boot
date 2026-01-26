@@ -1038,23 +1038,23 @@ int do_bootm_states(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[],
 #endif
 
 	/* Check reserved memory region */
-#ifdef CONFIG_CMD_RSVMEM
-#if defined(CONFIG_ZIRCON_BOOT_IMAGE)
-	if (images->os.os != IH_OS_ZIRCON) {
-		ret = run_command("rsvmem check", 0);
-		if (ret) {
-			puts("rsvmem check failed\n");
-			return ret;
-		}
-	}
-#else
-	ret = run_command("rsvmem check", 0);
-	if (ret) {
-		puts("rsvmem check failed\n");
-		return ret;
-	}
-#endif
-#endif
+// #ifdef CONFIG_CMD_RSVMEM
+// #if defined(CONFIG_ZIRCON_BOOT_IMAGE)
+// 	if (images->os.os != IH_OS_ZIRCON) {
+// 		ret = run_command("rsvmem check", 0);
+// 		if (ret) {
+// 			puts("rsvmem check failed\n");
+// 			return ret;
+// 		}
+// 	}
+// #else
+// 	ret = run_command("rsvmem check", 0);
+// 	if (ret) {
+// 		puts("rsvmem check failed\n");
+// 		return ret;
+// 	}
+// #endif
+// #endif
 
 #ifdef CONFIG_AML_DEFENDKEY
 	defendkey_process();
